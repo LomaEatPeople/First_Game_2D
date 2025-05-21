@@ -2,6 +2,7 @@ package main;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import javax.swing.JPanel;
 import javax.swing.plaf.DimensionUIResource;
 
@@ -17,7 +18,13 @@ public class GamePanel extends JPanel implements Runnable{
     final int screenWidth = tileSize * maxScreenCol; // 768 pixel
     final int screenHeight = tileSize * maxScreenRow; // 576 pixel
 
+    KeyHandler keyH = new KeyHandler();
     Thread gameThread;
+
+    // Set player's Default position
+    int playerX = 100;
+    int playerY = 100;
+    int playerSpeed = 3;
 
 
     public GamePanel(){
@@ -25,6 +32,8 @@ public class GamePanel extends JPanel implements Runnable{
         this.setPreferredSize(new DimensionUIResource(screenWidth, screenHeight));
         this.setBackground(Color.black);
         this.setDoubleBuffered(true);
+        this.addKeyListener(keyH);
+        this.setFocusable(true);
     }
 
     public void startGameThread(){
@@ -53,5 +62,13 @@ public class GamePanel extends JPanel implements Runnable{
     public void paintComponent(Graphics g){
 
         super.paintComponent(g);
+
+        Graphics2D g2 = (Graphics2D)g;
+
+        g2.setColor(Color.white);
+
+        g2.fillRect(playerX, playerY, tileSize, tileSize);
+
+        g2.dispose();
     }
 }
