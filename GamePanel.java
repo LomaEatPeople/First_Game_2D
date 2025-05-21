@@ -82,12 +82,40 @@ public class GamePanel extends JPanel implements Runnable{
 
         if(keyH.upPressed == true) {
             playerY -= playerSpeed;
+            if(keyH.leftPressed == true){
+                playerX -= playerSpeed/2;
+                playerY += playerSpeed/2;
+            }else if(keyH.rigthPressed == true){
+                playerX += playerSpeed/2;
+                playerY += playerSpeed/2;
+            }
         }else if(keyH.downPressed == true){
             playerY += playerSpeed;
+            if(keyH.leftPressed == true){
+            	playerX -= playerSpeed/2;
+                playerY -= playerSpeed/2;
+            }else if(keyH.rigthPressed == true){
+            	playerX += playerSpeed/2;
+                playerY -= playerSpeed/2;
+            }
         }else if(keyH.rigthPressed == true){
-            playerX -= playerSpeed;
-        }else if(keyH.leftPressed == true){
             playerX += playerSpeed;
+            if(keyH.upPressed == true){
+            	playerX += playerSpeed/2;
+                playerY += playerSpeed/2;
+            }else if(keyH.downPressed == true){
+            	playerX += playerSpeed/2;
+                playerY -= playerSpeed/2;
+            }
+        }else if(keyH.leftPressed == true){
+            playerX -= playerSpeed;
+            if(keyH.upPressed == true){
+            	playerX -= playerSpeed/2;
+                playerY += playerSpeed/2;
+            }else if(keyH.downPressed == true){
+            	playerX -= playerSpeed/2;
+                playerY -= playerSpeed/2;
+            }
         }
 
     }
