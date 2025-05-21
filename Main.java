@@ -7,6 +7,10 @@ public class Main{
         
         JFrame window = new JFrame();
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
+        window.setResizable(false);
+        window.setTitle("CS PhatAdventure");
+
+        window.setLocationRelativeTo(null);
+        window.setVisible(true);
     }
 }
